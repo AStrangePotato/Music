@@ -1,6 +1,10 @@
 from playsound import playsound
 import random
 notes = {
+    '-3':'A0',
+    '-2':'Bb0',
+    '-1':'B0',
+    
     '0':'C1',
     '1':'Db1',
     '2':'D1',
