@@ -3,15 +3,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 from playsound import playsound
 
+import threading
+
 import math
 
-notes = ["C4", "D4", "E4", "F4", "G4", "A4", "B4"]
-# Create the vectors X and Y
+from soundtest import playNotes
 
 quantity = 250
 
+
+# Create the vectors X and Y
 def linear():
     return list(range(quantity))
+
 def quadratic():
     a = list(range(quantity))
     for i in range(len(a)):
@@ -19,21 +23,25 @@ def quadratic():
     '''for i in range(len(a)):
         a[i] = a[i] % 40'''
     return a
+
 def triangular():
     a = []
     for i in range(quantity):
         a.append(i * (i+1) / 2)
     return a
+
 def sine():
     a = []
     for i in range(quantity):
         a.append(10 *math.sin(0.2 * i))
     return a
+
 def fibonacci():
     a = [1,1]
     for i in range(quantity - 2):
         a.append(a[i-1]+a[i-2])
     return a
+
 pitch_formula = int(input("Enter pitch formula\n1: linear, 2: quadratic, 3: triangular, 4: sine, 5: fibonacci\n"))
 tempo_formula = int(input("Enter tempo formula\n1: linear, 2: quadratic, 3: triangular, 4: sine, 5: fibonacci\n"))
 
@@ -89,5 +97,11 @@ plt.legend()
 #plt.arrow()
 
 # Show the plot
+
+def lostAgain():
+    playNotes(y_pitch)
+    
+threading.Thread(target=lostAgain).start()
 plt.show()
+
 
