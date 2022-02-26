@@ -45,7 +45,7 @@ def sine():
 def fibonacci():
     a = [1,1]
     for i in range(quantity - 2):
-        a.append(a[i-1]+a[i-2])
+        a.append(a[i+1]+a[i])
     return a
 
 pitch_formula = int(input("Enter pitch formula\n1: linear, 2: quadratic, 3: triangular, 4: sine, 5: fibonacci\n"))
